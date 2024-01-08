@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			#table1,
+			#table2 {
+				display: grid;
+				position: absolute;
+				left: 50%;
+                transform: translate(-50%, -50%);
+			}
+			.table-1 {
+				grid-template-columns: repeat(18, 1fr);
+				top: 38%;
+			}
+
+			.table-2 {
+				grid-template-columns: repeat(14, 1fr);
+				top: 80%;
+			}
+
+			.table-1 > element:nth-child(1) {
+				grid-column-start: 1;
+				grid-column-end: 18;
+			}
+			 .table-1 > element:nth-child(5),
+			element:nth-child(13) {
+				grid-column-start: 13;
+			}
+			.element {
+				width: 65px;
+				height: 65px;
+				background: white;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				border: 1px solid black;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="#table1"></div>
+		<div id="#table2"></div>
+		<script>
+			const table1 = document.getElementById('#table1');
+			const table2 = document.getElementById('#table2');
+
+			function generateGrid(amount, className, table) {
+				for (let i = 0; i < amount; i++) {
+					let element = document.createElement('div');
+
+					// parameter passed in as a classNmae will be the class that will be added to the element
+					element.className = className;
+					table.appendChild(element);
+				}
+			}
+
+			let elements = document.querySelectorAll('element');
+			generateGrid(90, 'element first-block',table1);
+			generateGrid(28, 'element second-block',table2);
+		</script>
+	</body>
+</html>

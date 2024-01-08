@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Periodic Table</title>
+	</head>
+	<style>
+		.container {
+			display: flex;
+			position: relative;
+            margin-top: 8rem;
+		}
+		.table-1,
+		.table-2,
+		.table-3,
+		.table-4,
+		.table-5,
+		.table-6 {
+			display: grid;
+			align-content: end;
+			position: relative;
+			left: 10%;
+		}
+		.table-1 {
+			grid-template-columns: repeat(1, 1fr);
+		}
+
+		.table-2 {
+			grid-template-columns: repeat(1, 1fr);
+		}
+		.table-3 {
+			grid-template-columns: repeat(10, 1fr);
+		}
+		.table-4 {
+			grid-template-columns: repeat(5, 1fr);
+		}
+		.table-5 {
+			grid-template-columns: repeat(1, 1fr);
+		}
+		.table-6 {
+			grid-template-columns: repeat(14, 1fr);
+			position: absolute;
+			top: 105%;
+			left: 15%;
+		}
+		.element {
+			width: 3.5rem;
+			height: 3.5rem;
+			background: rgb(255, 174, 174);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border: 1px solid black;
+		}
+	</style>
+
+	<body>
+		<div class="container">
+			<div class="table-1"></div>
+			<div class="table-2"></div>
+			<div class="table-3"></div>
+			<div class="table-4"></div>
+			<div class="table-5"></div>
+			<div class="table-6"></div>
+		</div>
+
+		<script>
+			const table_1 = document.querySelector('.table-1');
+			const table_2 = document.querySelector('.table-2');
+			const table_3 = document.querySelector('.table-3');
+			const table_4 = document.querySelector('.table-4');
+			const table_5 = document.querySelector('.table-5');
+			const table_6 = document.querySelector('.table-6');
+
+			function generateGrid(amount, className, table) {
+				for (let i = 0; i < amount; i++) {
+					let element = document.createElement('div');
+
+					// parameter passed in as a classNmae will be the class that will be added to the element
+					element.className = className;
+					table.appendChild(element);
+				}
+			}
+
+			let elements = document.querySelectorAll('element');
+			elements.forEach((ele) => {
+				ele.addEventListener('click', () => {
+					console.log('Clicked');
+				});
+			});
+
+			generateGrid(7, 'element', table_1);
+			generateGrid(6, 'element', table_2);
+			generateGrid(40, 'element', table_3);
+			generateGrid(30, 'element', table_4);
+			generateGrid(7, 'element', table_5);
+			generateGrid(28, 'element', table_6);
+		</script>
+	</body>
+</html>
